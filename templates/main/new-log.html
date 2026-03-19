@@ -1,0 +1,16 @@
+<!-- new-log.html -->
+<html>
+    {% include "base/head.html" %}
+    <body>
+        <form method="POST" action="/new-log-input/1">
+            <label for="food">Food:</label>
+            <input type="text" name="food" id="food" required>
+
+            <label for="given_percent">Percentage given:</label>
+            <input type="number" name="given_percent" id="given_percent" value="50" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+<!-- new-log.html -->

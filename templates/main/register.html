@@ -1,0 +1,21 @@
+<!-- register.html -->
+<html>
+    {% include "base/head.html" %}
+    <body>
+        <a href="login">Login</a>
+
+        <form method="POST" action="/register-input">
+            <label for="name">Pet's name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
+
+            <label for="password">Password:</label>
+            <input type="passowrd" name="passowrd" id="password" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+<!-- register.html -->

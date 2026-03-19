@@ -1,0 +1,16 @@
+<!-- logs.html -->
+<html>
+    {% include "base/head.html" %}
+    <body>
+        <a href="/new-log">New log</a>
+        {% for log in logs %}
+            <div>
+                <p>{{ log.id }}</p>
+                <p>{{ log.food }}</p>
+                <p>{{ log.given_percent }}</p>
+                <p>{{ log.eaten_percent }}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
+<!-- logs.html -->
