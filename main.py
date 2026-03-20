@@ -4,7 +4,7 @@ from functools import wraps
 import sqlite3, os
 
 app = Flask(__name__)
-
+app.secret_key = "veryverysecretkeymmmmmyessosecretyesyesnoonewilleverknow"
 
 def login_required(func):
     @wraps(func)
@@ -32,9 +32,9 @@ def get_db_connection():
     return conn, cur
 
 
-def get_foods():
+def get_foods(id):
     conn, cur = get_db_connection()
-    cur.execute("SELECT DISTINCT food FROM pet_1")
+    cur.execute(f"SELECT DISTINCT food FROM pet_{id}")
     data = cur.fetchall()
     foods = [food["food"] for food in data]
     conn.close()
@@ -104,13 +104,15 @@ def login_input():
     data = cur.fetchone()
     id = data["id"]
     password_md5 = data["password"]
+    conn.close()
     
     if password_md5:
         if password == password_md5:
             session["id"] = id
             #CATCH ERRORS
     
-    return redirect("/logs")
+            return redirect("/logs")
+    return redirect("/login")
 
 
 @login_required
@@ -167,6 +169,24 @@ def new_log_input():
     conn.close()
 
     return redirect(f"/logs")
+
+
+@login_required
+@app.route("update/<id>", methods=["POST"])
+def update(id):
+    return redirect("/logs")
+
+
+@login_required
+@app.route("edit/<id>")
+def edit(id):
+    return render_template("edit-log.html")
+
+
+@login_required
+@app.route("/input-edit/<id>", methods=["POST"])
+def input_edit(id):
+    return redirect("/logs")
 
 
 if __name__ == "__main__":

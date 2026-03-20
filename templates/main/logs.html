@@ -4,13 +4,15 @@
     <body>
         <a href="/new-log">New log</a>
         {% for log in logs %}
-            <div>
+            <form method="POST" action="/update-{{ log['id'] }}">
                 <p>{{ log["id"] }}</p>
                 <p>{{ log["food"] }}</p>
                 <p>{{ log["given_percent"] }}</p>
-                <p>{{ log["eaten_percent"] }}</p>
+                <input type="number" value="{{ log['eaten_percent'] }}" min="0" max="100">
                 <p>{{ log["datetime_str"] }}</p>
-            </div>
+                <button type="submit">Update</button>
+                <a href="/edit-{{ log['id'] }}">Edit</a>
+            </form>
         {% endfor %}
     </body>
 </html>
