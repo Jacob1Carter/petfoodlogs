@@ -5,10 +5,11 @@
         <a href="/new-log">New log</a>
         {% for log in logs %}
             <div>
-                <p>{{ log.id }}</p>
-                <p>{{ log.food }}</p>
-                <p>{{ log.given_percent }}</p>
-                <p>{{ log.eaten_percent }}</p>
+                <p>{{ log["id"] }}</p>
+                <p>{{ log["food"] }}</p>
+                <p>{{ log["given_percent"] }}</p>
+                <p>{{ log["eaten_percent"] }}</p>
+                <p>{{ log["datetime_str"] }}</p>
             </div>
         {% endfor %}
     </body>

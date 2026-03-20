@@ -2,9 +2,17 @@
 <html>
     {% include "base/head.html" %}
     <body>
-        <form method="POST" action="/new-log-input/1">
+        <form method="POST" action="/new-log-input">
             <label for="food">Food:</label>
-            <input type="text" name="food" id="food" required>
+            <select name="food" id="food">
+                <option value="none" selected disabled>Select an option...</option>
+                {% for food in foods %}
+                <option value="{{ food }}">{{ food }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="new-food">New food <small>Only if not in list above</small></label>
+            <input type="text" name="new-food" id="new-food">
 
             <label for="given_percent">Percentage given:</label>
             <input type="number" name="given_percent" id="given_percent" value="50" required>
