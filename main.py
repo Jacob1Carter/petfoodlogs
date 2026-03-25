@@ -172,13 +172,13 @@ def new_log_input():
 
 
 @login_required
-@app.route("update/<id>", methods=["POST"])
+@app.route("/update/<id>", methods=["POST"])
 def update(id):
     return redirect("/logs")
 
 
 @login_required
-@app.route("edit/<id>")
+@app.route("/edit/<id>")
 def edit(id):
     return render_template("edit-log.html")
 
