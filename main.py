@@ -154,11 +154,13 @@ def new_log():
 def new_log_input():
     id = session["id"]
     food = request.form.get("food")
-    new_food = request.form.get("new_food")
+    print(food)
+    new_food = request.form.get("new-food")
+    print(new_food)
     given_percent = int(request.form.get("given_percent"))
 
     if new_food != None:
-        foods = get_foods()
+        foods = get_foods(id)
         if new_food not in foods:
             food = new_food
             #CATCH ERRORS

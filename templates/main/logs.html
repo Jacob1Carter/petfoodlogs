@@ -7,8 +7,8 @@
             <form method="POST" action="/update-{{ log['id'] }}" class="logbox">
                 <div>{{ log["food"] }} at {{ log["datetime_str"] }}</div>
                 <div>{{ log["given_percent"] }}% of a packet given</div>
-                <div><input type="number" value="{{ log['eaten_percent'] }}" min="0" max="100"></div>
-                <div><a href="/edit-{{ log['id'] }}">Edit</a><button type="submit">Update</button></div>
+                <div><input type="range" min="10" max="100" step="10" value="100"></div>
+                <div><a href="/edit-{{ log['id'] }}" class="btn btn-orange">Edit</a><button type="submit" class="btn btn-blue">Update</button></div>
             </form>
         {% endfor %}
     </body>
