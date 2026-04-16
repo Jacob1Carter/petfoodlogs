@@ -175,7 +175,13 @@ def new_log_input():
 
 @login_required
 @app.route("/update/<id>", methods=["POST"])
-def update(id):
+def update(log_id):
+    id = session["id"]
+    eaten_percent = request.form.get("eaten-input")
+    conn, cur = get_db_connection()
+    cur.execute(f"UPDATE pet_{id} SET eaten_percent = {int(eaten_percent)} WHERE id == log_id")
+    conn.commit()
+    conn.close()
     return redirect("/logs")
 
 

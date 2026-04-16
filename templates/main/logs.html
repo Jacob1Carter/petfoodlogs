@@ -4,11 +4,15 @@
     <body>
         <a href="/new-log">New log</a>
         {% for log in logs %}
-            <form method="POST" action="/update-{{ log['id'] }}" class="logbox">
+            <form method="POST" action="/update/{{ log['id'] }}" class="logbox">
                 <div>{{ log["food"] }} at {{ log["datetime_str"] }}</div>
                 <div>{{ log["given_percent"] }}% of a packet given</div>
-                <div><input type="range" min="10" max="100" step="10" value="100"></div>
-                <div><a href="/edit-{{ log['id'] }}" class="btn btn-orange">Edit</a><button type="submit" class="btn btn-blue">Update</button></div>
+                {% if log["eaten_percent"] == 0 %}
+                    <div><input type="range" min="10" max="100" step="10" value="100" name="eaten-input" class="eaten-input"></div>
+                {% else %}
+                    <div>{{ log["eaten_percent"] }} % eaten</div>
+                {% endif %}
+                <div><a href="/edit/{{ log['id'] }}" class="btn btn-orange">Edit</a><button type="submit" class="btn btn-blue">Update</button></div>
             </form>
         {% endfor %}
     </body>
